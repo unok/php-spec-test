@@ -66,12 +66,13 @@ class Util_TestDox_NamePrettifierTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Foo', $this->namePrettifier->prettifyTestClass('FooTest'));
         $this->assertEquals('Foo', $this->namePrettifier->prettifyTestClass('TestFoo'));
         $this->assertEquals('Foo', $this->namePrettifier->prettifyTestClass('TestFooTest'));
+        $this->assertEquals('Foo', $this->namePrettifier->prettifyTestClass('Test\FooTest'));
     }
 
     public function testCaterForUserDefinedSuffix()
     {
         $this->namePrettifier->setSuffix('TestCase');
-        $this->namePrettifier->setPrefix(NULL);
+        $this->namePrettifier->setPrefix(null);
 
         $this->assertEquals('Foo', $this->namePrettifier->prettifyTestClass('FooTestCase'));
         $this->assertEquals('TestFoo', $this->namePrettifier->prettifyTestClass('TestFoo'));
@@ -80,7 +81,7 @@ class Util_TestDox_NamePrettifierTest extends PHPUnit_Framework_TestCase
 
     public function testCaterForUserDefinedPrefix()
     {
-        $this->namePrettifier->setSuffix(NULL);
+        $this->namePrettifier->setSuffix(null);
         $this->namePrettifier->setPrefix('XXX');
 
         $this->assertEquals('Foo', $this->namePrettifier->prettifyTestClass('XXXFoo'));

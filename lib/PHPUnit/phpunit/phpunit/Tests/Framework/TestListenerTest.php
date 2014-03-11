@@ -42,10 +42,6 @@
  * @since      File available since Release 2.0.0
  */
 
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Error.php';
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Failure.php';
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . '_files' . DIRECTORY_SEPARATOR . 'Success.php';
-
 /**
  *
  *
@@ -62,6 +58,7 @@ class Framework_TestListenerTest extends PHPUnit_Framework_TestCase implements P
     protected $errorCount;
     protected $failureCount;
     protected $notImplementedCount;
+    protected $riskyCount;
     protected $skippedCount;
     protected $result;
     protected $startCount;
@@ -79,6 +76,11 @@ class Framework_TestListenerTest extends PHPUnit_Framework_TestCase implements P
     public function addIncompleteTest(PHPUnit_Framework_Test $test, Exception $e, $time)
     {
         $this->notImplementedCount++;
+    }
+
+    public function addRiskyTest(PHPUnit_Framework_Test $test, Exception $e, $time)
+    {
+        $this->riskyCount++;
     }
 
     public function addSkippedTest(PHPUnit_Framework_Test $test, Exception $e, $time)
@@ -112,6 +114,7 @@ class Framework_TestListenerTest extends PHPUnit_Framework_TestCase implements P
         $this->endCount            = 0;
         $this->failureCount        = 0;
         $this->notImplementedCount = 0;
+        $this->riskyCount          = 0;
         $this->skippedCount        = 0;
         $this->startCount          = 0;
     }
