@@ -1,55 +1,82 @@
 <?php
 class EmptyTest extends PHPUnit_Framework_TestCase
 {
-    function test空文字はEmptyです()
+    /**
+     * @test
+     */
+    function 空文字はEmptyです()
     {
         $value = '';
         $this->assertTrue(empty($value));
     }
-    
-    function testNULLはEmptyです()
+
+    /**
+     * @test
+     */
+    function NULLはEmptyです()
     {
         $value = null;
         $this->assertTrue(empty($value));
     }
-    
-    function test0はEmptyです()
+
+    /**
+     * @test
+     */
+    function 数値0はEmptyです()
     {
         $value = 0;
         $this->assertTrue(empty($value));
     }
-    
-    function test偽はEmpty()
+
+    /**
+     * @test
+     */
+    function 偽はEmpty()
     {
         $value = false;
         $this->assertTrue(empty($value));
     }
-    
-    function test0という文字列はEmptyです()
+
+    /**
+     * @test
+     */
+    function 文字列0はEmptyです()
     {
         $value = '0';
         $this->assertTrue(empty($value));
     }
-    
-    function testFalseという文字列はEmptyではない()
+
+    /**
+     * @test
+     */
+    function Falseという文字列はEmptyではない()
     {
         $value = 'False';
         $this->assertFalse(empty($value));
     }
-    
-    function test存在しない添字の配列に使えるかつEmptyです()
+
+    /**
+     * @test
+     */
+    function 存在しない添字の配列に使えるかつEmptyです()
     {
         $value = array();
         $this->assertTrue(empty($value['uso800']));
     }
-    
-    function test連想配列で値がnullの場合はEmptyです()
+
+    /**
+     * @test
+     */
+    function 連想配列で値がnullの場合はEmptyです()
     {
         $value = array('uso800' => null);
         $this->assertTrue(empty($value['uso800']));
     }
-    
-    function test連想配列で値がfalseの場合はEmptyです()
+
+    /**
+     * @test
+     */
+    function 連想配列で値がfalseの場合はEmptyです()
     {
         $value = array('uso800' => false);
         $this->assertTrue(empty($value['uso800']));
